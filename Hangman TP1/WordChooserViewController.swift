@@ -22,6 +22,9 @@ class WordChooserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func unwindToWordChooserVC(segue: UIStoryboardSegue) {
+    }
+
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,7 +33,7 @@ class WordChooserViewController: UIViewController {
         if segue.identifier == "startGame" {
             if let destinationVC = segue.destination as? GamePlayViewController {
                 print(wordChooserTextField.text!)
-                destinationVC.word = wordChooserTextField.text!
+                destinationVC.word = wordChooserTextField.text!.uppercased()
             }
         }
     }

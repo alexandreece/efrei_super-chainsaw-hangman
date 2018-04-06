@@ -19,14 +19,6 @@ class GamePlayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Resets everything in case you restart the game
-        nbEchecs = 0
-        labelWord.text = ""
-        hangmanImageView.image = nil
-        foundLetters = ""
-        for case let button as UIButton in self.view.subviews {
-            button.isEnabled = true //Resets all uibuttons
-        }
         for _ in word! {
             foundLetters = "\(foundLetters)_"
         }
@@ -54,14 +46,11 @@ class GamePlayViewController: UIViewController {
             labelWord.text = addSpacesInBetweenCharacters(string: foundLetters)
 
             if foundLetters == word! {
-                labelWord.text = "GAGNÉ"
-
                 let popupEndGame = UIAlertController(title: "Gagné !", message: "Vous avez trouvé toutes les lettres. Rejouez !", preferredStyle: .alert)
                 let actionRestart = UIAlertAction(title: "Recommencer", style: .default) { (action: UIAlertAction) in
-                    self.viewDidLoad()
+                    self.performSegue(withIdentifier: "unwindSegueRestart", sender: self)
                 }
                 popupEndGame.addAction(actionRestart)
-
                 self.present(popupEndGame, animated: true, completion: nil)
             }
         } else {
@@ -74,7 +63,7 @@ class GamePlayViewController: UIViewController {
 
                 let popupEndGame = UIAlertController(title: "Perdu ! Le mot était \(word!).", message: "Vous avez utilisé tous vos essais. Réessayez !", preferredStyle: .alert)
                 let actionRestart = UIAlertAction(title: "Recommencer", style: .default) { (action: UIAlertAction) in
-                    self.viewDidLoad()
+                    self.performSegue(withIdentifier: "unwindSegueRestart", sender: self)
                 }
                 popupEndGame.addAction(actionRestart)
 

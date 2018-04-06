@@ -286,11 +286,13 @@
                     <connections>
                         <outlet property="hangmanImageView" destination="Nf4-Bg-asa" id="DiR-wd-FhI"/>
                         <outlet property="labelWord" destination="7jx-XT-GYh" id="8ZF-i0-by9"/>
+                        <segue destination="Lia-eu-ABU" kind="unwind" identifier="unwindSegueRestart" unwindAction="unwindToWordChooserVCWithSegue:" id="TCs-E1-bG4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wqm-cu-Bra" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Lia-eu-ABU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="989.60000000000002" y="2284.729064039409"/>
+            <point key="canvasLocation" x="996" y="2288"/>
         </scene>
     </scenes>
 </document>
