@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  HangMan TP1
+//  GamePlayViewController.swift
+//  Hangman TP1 & 2
 //
 //  Created by Alexandre on 28/03/2018.
 //  Copyright © 2018 Alexandre. All rights reserved.
@@ -22,7 +22,7 @@ class GamePlayViewController: UIViewController {
         for _ in word! {
             foundLetters = "\(foundLetters)_"
         }
-        labelWord.text! = addSpacesInBetweenCharacters(string: foundLetters)
+        labelWord.text! = addSpacesBetweenCharacters(string: foundLetters)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,42 +33,9 @@ class GamePlayViewController: UIViewController {
     @IBAction func didPressLetter(_ sender: UIButton) {
         let letter = sender.currentTitle!.first!
         sender.isEnabled = false
+        updateGame(vc: self, letter: letter)
+    }
 
-        if isLetterInWord(letter: letter, word: word!) {
-            var position = 0
-            for character in word! {
-                if character == letter {
-                    foundLetters = "\(foundLetters.prefix(position))\(letter)\(foundLetters.dropFirst(position + 1))"
-                }
-                position += 1
-            }
-
-            labelWord.text = addSpacesInBetweenCharacters(string: foundLetters)
-
-            if foundLetters == word! {
-                let popupEndGame = UIAlertController(title: "Gagné !", message: "Vous avez trouvé toutes les lettres. Rejouez !", preferredStyle: .alert)
-                let actionRestart = UIAlertAction(title: "Recommencer", style: .default) { (action: UIAlertAction) in
-                    self.performSegue(withIdentifier: "unwindSegueRestart", sender: self)
-                }
-                popupEndGame.addAction(actionRestart)
-                self.present(popupEndGame, animated: true, completion: nil)
-            }
-        } else {
-            nbEchecs += 1
-
-            hangmanImageView.image = hangmanImages[nbEchecs - 1]
-
-            if nbEchecs == hangmanImages.count {
-                labelWord.text = "PERDU"
-
-                let popupEndGame = UIAlertController(title: "Perdu ! Le mot était \(word!).", message: "Vous avez utilisé tous vos essais. Réessayez !", preferredStyle: .alert)
-                let actionRestart = UIAlertAction(title: "Recommencer", style: .default) { (action: UIAlertAction) in
-                    self.performSegue(withIdentifier: "unwindSegueRestart", sender: self)
-                }
-                popupEndGame.addAction(actionRestart)
-
-                self.present(popupEndGame, animated: true, completion: nil)
-            }
-        }
+    @IBAction func didPressPause(_ sender: Any) {
     }
 }

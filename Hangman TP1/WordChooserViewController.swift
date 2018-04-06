@@ -1,6 +1,6 @@
 //
 //  WordChooserViewController.swift
-//  HangMan TP1
+//  Hangman TP1 & 2
 //
 //  Created by Alexandre on 04/04/2018.
 //  Copyright © 2018 Alexandre. All rights reserved.
@@ -32,7 +32,6 @@ class WordChooserViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "startGame" {
             if let destinationVC = segue.destination as? GamePlayViewController {
-                print(wordChooserTextField.text!)
                 destinationVC.word = wordChooserTextField.text!.uppercased()
             }
         }
