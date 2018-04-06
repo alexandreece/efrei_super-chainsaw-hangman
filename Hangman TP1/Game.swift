@@ -8,6 +8,12 @@
 
 import Foundation
 
+protocol GameDelegate {
+    func updateLabel(label: String)
+    func updateImageView(image: Int)
+    func endGame(won: Bool)
+}
+
 class Game {
 
     var word: String
@@ -15,18 +21,18 @@ class Game {
     var foundLetters: String
     var nbEssais: Int
 
-    init() {
+    init(word: String) {
         nbEchecs = 0
-        foundLetters = ""
+        foundLetters = String()
         nbEssais = Int()
-        word = String()
+        self.word = word
         for _ in word {
             foundLetters = "\(foundLetters)_"
         }
     }
 
-    func play(letter: Character) {
-        if isLetterInWord(letter: letter, word: word) {
+    func play(letter: Character, del: GameDelegate) {
+        if word.contains(letter) {
             var position = 0
             for character in word {
                 if character == letter {
@@ -34,21 +40,18 @@ class Game {
                 }
                 position += 1
             }
+            del.updateLabel(label: addSpacesBetweenCharacters(string: foundLetters))
             if foundLetters == word {
-                //END WON
+                del.endGame(won: true)
             }
         } else {
             nbEchecs += 1
-            //UPDATE IMAGE
+            del.updateImageView(image: nbEchecs - 1)
             if nbEchecs == nbEssais {
-                //END LOST
+                del.endGame(won: false)
             }
         }
     }
-}
-
-func isLetterInWord(letter: Character, word: String) -> Bool {
-    return word.contains(letter)
 }
 
 func addSpacesBetweenCharacters(string: String) -> String {
