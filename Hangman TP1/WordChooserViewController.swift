@@ -32,7 +32,9 @@ class WordChooserViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "startGame" {
             if let destinationVC = segue.destination as? GamePlayViewController {
-                destinationVC.word = wordChooserTextField.text!.uppercased()
+                let game = Game()
+                game.word = wordChooserTextField.text!.uppercased()
+                destinationVC.game = game
             }
         }
     }
