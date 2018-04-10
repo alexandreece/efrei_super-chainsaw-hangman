@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC1EB92C2077A54400D304EE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EB92B2077A54400D304EE /* Game.swift */; };
+		AC44E41D207CF13E0012B0DE /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC44E41C207CF13E0012B0DE /* words.plist */; };
 		ACFE2F5D207680CD00A88440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE2F5C207680CD00A88440 /* AppDelegate.swift */; };
 		ACFE2F62207680CD00A88440 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFE2F60207680CD00A88440 /* Main.storyboard */; };
 		ACFE2F64207680CD00A88440 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACFE2F63207680CD00A88440 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		AC1EB92B2077A54400D304EE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		AC44E41C207CF13E0012B0DE /* words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = words.plist; sourceTree = "<group>"; };
 		ACFE2F59207680CD00A88440 /* Hangman TP1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hangman TP1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFE2F5C207680CD00A88440 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFE2F61207680CD00A88440 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				B212549B2AEF8E36C5001987 /* WordChooserViewController.swift */,
 				B2125E5F52D18FAD1780779C /* GamePlayViewController.swift */,
 				AC1EB92B2077A54400D304EE /* Game.swift */,
+				AC44E41C207CF13E0012B0DE /* words.plist */,
 			);
 			path = "Hangman TP1";
 			sourceTree = "<group>";
@@ -129,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC44E41D207CF13E0012B0DE /* words.plist in Resources */,
 				ACFE2F67207680CD00A88440 /* LaunchScreen.storyboard in Resources */,
 				ACFE2F64207680CD00A88440 /* Assets.xcassets in Resources */,
 				ACFE2F62207680CD00A88440 /* Main.storyboard in Resources */,
