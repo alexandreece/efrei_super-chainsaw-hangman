@@ -13,6 +13,7 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var labelWord: UILabel!
     @IBOutlet weak var hangmanImageView: UIImageView!
     let hangmanImages = [#imageLiteral(resourceName:"Hangman-0"), #imageLiteral(resourceName:"Hangman-1"), #imageLiteral(resourceName:"Hangman-2"), #imageLiteral(resourceName:"Hangman-3"), #imageLiteral(resourceName:"Hangman-4"), #imageLiteral(resourceName:"Hangman-5"), #imageLiteral(resourceName:"Hangman-6")]
+    lazy var pauseView = UIView()
     var game: Game?
 
     override func viewDidLoad() {
@@ -28,7 +29,23 @@ class GamePlayViewController: UIViewController {
     }
 
     @IBAction func didPressPause(_ sender: Any) {
-        print("pause")
+        pauseView.frame = view.bounds
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = pauseView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        pauseView.addSubview(blurEffectView)
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        button.center = pauseView.center
+        button.setTitleColor(.green, for: .normal)
+        button.setTitle("Resume", for: .normal)
+        button.addTarget(self, action: #selector(didPressResume), for: .touchUpInside)
+        pauseView.addSubview(button)
+        view.addSubview(pauseView)
+    }
+
+    @objc func didPressResume(sender: UIButton!) {
+        pauseView.removeFromSuperview()
     }
 }
 
