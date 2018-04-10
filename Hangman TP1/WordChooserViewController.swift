@@ -11,8 +11,14 @@ import UIKit
 class WordChooserViewController: UIViewController {
 
     @IBOutlet weak var wordChooserTextField: UITextField!
+
     @IBAction func unwindToWordChooserVC(segue: UIStoryboardSegue) {
     }
+
+    @IBAction func didPressLackImagination(_ sender: Any) {
+
+    }
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "startGame" {
