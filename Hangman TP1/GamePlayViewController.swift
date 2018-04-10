@@ -44,7 +44,7 @@ class GamePlayViewController: UIViewController {
         view.addSubview(pauseView)
     }
 
-    @objc func didPressResume(sender: UIButton!) {
+    @objc func didPressResume(sender: Any) {
         pauseView.removeFromSuperview()
     }
 }
