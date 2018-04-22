@@ -10,7 +10,16 @@ import UIKit
 
 class WordChooserViewController: UIViewController {
 
-    lazy var words: [String] = []
+    var words: [String] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let path = Bundle.main.path(forResource: "words", ofType: "plist")
+        let dict: NSArray = NSArray(contentsOfFile: path!)!
+        for word in dict {
+            words.append(word as! String)
+        }
+    }
 
     @IBOutlet weak var wordChooserTextField: UITextField!
 
@@ -18,11 +27,6 @@ class WordChooserViewController: UIViewController {
     }
 
     @IBAction func didPressLackImagination(_ sender: Any) {
-        let path = Bundle.main.path(forResource: "words", ofType: "plist")
-        let dict: NSArray = NSArray(contentsOfFile: path!)!
-        for word in dict {
-            words.append(word as! String)
-        }
         let randomIndex = Int(arc4random_uniform(UInt32(words.count)))
         wordChooserTextField.text = words[randomIndex]
     }
